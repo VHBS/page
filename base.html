@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Victor Hugo Baum Schlichting — Portfólio</title>
+  <meta name="description" content="Portfólio de Victor Hugo Baum Schlichting (VHBS) — Desenvolvedor Fullstack" />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --muted: #6b7280;
+      --accent: #0f172a;
+      /* dark slate */
+      --primary: #0b74da;
+      --card: #f8fafc;
+      --maxw: 980px;
+      --radius: 10px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--accent);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+    }
+
+    header.site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(180deg, rgba(11, 116, 218, 0.06), transparent 50%);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .hero-left {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .initial {
+      width: 96px;
+      height: 96px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), #0666b1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 28px;
+      box-shadow: 0 6px 18px rgba(11, 116, 218, 0.15);
+      flex-shrink: 0;
+      cursor: default;
+      user-select: none;
+      transition: transform .22s ease;
+    }
+
+    /* VHBS hover -> expand to full name */
+    .name-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 220px;
+    }
+
+    .brand-short {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      position: relative;
+      display: inline-block;
+      transition: all .22s ease;
+    }
+
+    .brand-long {
+      font-size: 14px;
+      color: var(--muted);
+      transform-origin: left center;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all .22s ease;
+    }
+
+    /* Hover effect container */
+    .brand-hover {
+      display: inline-block;
+    }
+
+    .brand-hover:hover .brand-short {
+      transform: translateX(-6px) scale(0.98);
+      letter-spacing: 0.02em;
+      color: var(--primary);
+    }
+
+    .brand-hover:hover .brand-long {
+      opacity: 1;
+      max-height: 100px;
+      transform: translateY(0);
+    }
+
+    .role {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid rgba(11, 116, 218, 0.12);
+      color: var(--primary);
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all .16s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(11, 116, 218, 0.06)
+    }
+
+    /* Layout columns */
+    main {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width:880px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        flex-direction: column;
+        align-items: flex-start
+      }
+
+      .hero-actions {
+        width: 100%
+      }
+    }
+
+    /* Cards */
+    section.card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(12, 13, 14, 0.03);
+    }
+
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    p.lead {
+      margin: 0 0 12px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Skills list */
+    .skills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      background: white;
+      border: 1px solid #e6eef9;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* Projects */
+    .project {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .thumb {
+      width: 88px;
+      height: 64px;
+      background: #e9eef6;
+      border-radius: 6px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .project-content h3 {
+      margin: 0;
+      font-size: 14px
+    }
+
+    .project-content p {
+      margin: 6px 0 0 0;
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    /* Experience list */
+    .exp-item {
+      margin-bottom: 12px
+    }
+
+    .exp-role {
+      font-weight: 700;
+      font-size: 14px
+    }
+
+    .exp-company {
+      color: var(--muted);
+      font-size: 13px
+    }
+
+    /* Contact */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted)
+    }
+
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" role="main">
+    <header class="site-header" aria-label="Cabeçalho do portfólio">
+      <div class="brand" aria-hidden="false">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="initial" aria-hidden="true">V</div>
+          <div style="display:flex;flex-direction:column">
+            <div class="brand-hover" title="Passe o mouse para ver o nome">
+              <div class="brand-short" id="brandShort">VHBS</div>
+              <div class="brand-long" id="brandLong">Victor Hugo Baum Schlichting</div>
+            </div>
+            <div class="role">Desenvolvedor Fullstack</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="hero-actions" aria-label="Ações rápidas">
+        <a class="btn" href="#" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="#" download>Currículo (PDF)</a>
+      </nav>
+    </header>
+
+    <div class="hero" aria-hidden="false" style="margin-bottom:18px">
+      <div class="hero-left" style="align-items:flex-start">
+        <div style="display:flex;flex-direction:column">
+          <div style="font-size:20px;font-weight:700">Victor Hugo Baum Schlichting</div>
+          <div class="role" style="margin-top:6px">Desenvolvedor Fullstack — Fleetz System</div>
+        </div>
+      </div>
+
+      <div class="hero-actions" style="margin-left:auto">
+        <a class="btn" href="mailto:seu-email@exemplo.com">Entrar em contato</a>
+        <a class="btn" href="#projetos">Ver projetos</a>
+      </div>
+    </div>
+
+    <main>
+      <!-- Conteúdo principal -->
+      <div>
+        <!-- Sobre -->
+        <section class="card" id="sobre" aria-labelledby="sobreHeading">
+          <h2 id="sobreHeading">Sobre</h2>
+          <p class="lead">
+            Desenvolvedor <strong>fullstack</strong> com experiência em <strong>PHP, JavaScript/TypeScript, ReactJS,
+              Node.js, MySQL, RabbitMQ</strong> e
+            automações com <strong>Python (Selenium)</strong>. Estudante de <strong>Análise e Desenvolvimento de
+              Sistemas (Senac)</strong>, com formação complementar em
+            <strong>Desenvolvimento Web (Trybe)</strong> e <strong>Design para Web (Senac)</strong>. Trabalho em
+            startups e atuo com backend, frontend, automação e gestão básica
+            de infra em <strong>AWS (EC2, Lambda, RDS)</strong>. Dedicação, aprendizado rápido e trabalho em equipe são
+            características que me definem.
+          </p>
+          <p class="small">
+            Objetivo atual: permanecer no time da Fleetz System enquanto estou aberto a freelas e oportunidades que
+            proporcionem crescimento técnico.
+          </p>
+        </section>
+
+        <!-- Projetos -->
+        <section class="card" id="projetos" aria-labelledby="projetosHeading" style="margin-top:18px">
+          <h2 id="projetosHeading">Projetos</h2>
+
+          <!-- Projeto 1 -->
+          <article class="project" aria-labelledby="proj1">
+            <div class="thumb">Preview</div>
+            <div class="project-content">
+              <h3 id="proj1">SaaS de gerenciamento de containers</h3>
+              <p>Plataforma para compra, eventos, aluguel e vendas de containers. Stack: React, Node.js, MySQL.
+                (Descrição curta — substituir por detalhes / links)</p>
+            </div>
+          </article>
+
+          <!-- Projeto 2 -->
+          <article class="project" aria-labelledby="proj2">
+            <div class="thumb">Preview</div>
+            <div class="project-content">
+              <h3 id="proj2">Automação com Selenium</h3>
+              <p>Soluções de automação para tarefas repetitivas. Stack: Python + Selenium. (Adicionar link para
+                repositório / demo quando possível)</p>
+            </div>
+          </article>
+
+          <!-- Projeto 3 -->
+          <article class="project" aria-labelledby="proj3">
+            <div class="thumb">Preview</div>
+            <div class="project-content">
+              <h3 id="proj3">Projeto Trybe / Portfólio</h3>
+              <p>Projeto de estudo focado em desenvolvimento web: React + API Node. (Adicionar link)</p>
+            </div>
+          </article>
+
+          <p style="margin-top:8px" class="small">Mais projetos no GitHub — <a href="#" target="_blank"
+              rel="noopener">ver repositórios</a></p>
+        </section>
+
+        <!-- Experiência -->
+        <section class="card" id="experiencia" aria-labelledby="experienciaHeading" style="margin-top:18px">
+          <h2 id="experienciaHeading">Experiência</h2>
+
+          <div class="exp-item">
+            <div class="exp-role">Desenvolvedor Fullstack</div>
+            <div class="exp-company">Fleetz System — 2022 – atual</div>
+            <ul style="margin:8px 0 0 16px;color:var(--muted)">
+              <li>Desenvolvimento em PHP, React e Node.js.</li>
+              <li>Filas e processamento com RabbitMQ.</li>
+              <li>Automação com Python + Selenium.</li>
+              <li>Gerenciamento de instâncias e recursos na AWS (EC2, Lambda, RDS).</li>
+            </ul>
+          </div>
+
+          <!-- Você pode adicionar outras experiências aqui -->
+        </section>
+      </div>
+
+      <!-- Barra lateral -->
+      <aside>
+        <section class="card" aria-labelledby="skillsHeading">
+          <h2 id="skillsHeading">Habilidades</h2>
+          <div class="skills" role="list">
+            <div class="skill" role="listitem">React</div>
+            <div class="skill" role="listitem">Node.js</div>
+            <div class="skill" role="listitem">TypeScript</div>
+            <div class="skill" role="listitem">PHP</div>
+            <div class="skill" role="listitem">MySQL</div>
+            <div class="skill" role="listitem">RabbitMQ</div>
+            <div class="skill" role="listitem">Python (Selenium)</div>
+            <div class="skill" role="listitem">AWS</div>
+            <div class="skill" role="listitem">Git</div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:18px" aria-labelledby="educationHeading">
+          <h2 id="educationHeading">Formação</h2>
+          <p class="small"><strong>Análise e Desenvolvimento de Sistemas — Senac</strong><br>Jan 2025 – atual</p>
+          <p class="small" style="margin-top:8px"><strong>Desenvolvimento Web — Trybe</strong><br>Ago 2021 – Set 2022
+          </p>
+          <p class="small" style="margin-top:8px"><strong>Design para Web — Senac</strong><br>36h</p>
+        </section>
+
+        <section class="card" style="margin-top:18px" aria-labelledby="contactHeading">
+          <h2 id="contactHeading">Contato</h2>
+          <div class="contact-list">
+            <div><strong>Email</strong>
+              <div class="small"><a href="mailto:seu-email@exemplo.com">seu-email@exemplo.com</a></div>
+            </div>
+            <div><strong>LinkedIn</strong>
+              <div class="small"><a href="#" target="_blank" rel="noopener">linkedin.com/in/seu-perfil</a></div>
+            </div>
+            <div><strong>GitHub</strong>
+              <div class="small"><a href="#" target="_blank" rel="noopener">github.com/seu-usuario</a></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:18px" aria-labelledby="interestsHeading">
+          <h2 id="interestsHeading">Interesses</h2>
+          <p class="small">Jogos (Rocket League), música (violão e canto), fotografia e skate.</p>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Victor Hugo Baum Schlichting — VHBS
+    </footer>
+  </div>
+
+  <script>
+    // Inserir ano automaticamente
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tocando para touch devices: alterna entre VHBS e nome completo ao clicar
+    (function () {
+      const short = document.getElementById('brandShort');
+      const long = document.getElementById('brandLong');
+      let toggled = false;
+
+      // on touch / click toggle (for mobile)
+      document.querySelector('.brand-hover').addEventListener('click', function (e) {
+        // only toggle on small screens to avoid interfering with hover UX
+        if (window.innerWidth <= 880) {
+          toggled = !toggled;
+          if (toggled) {
+            short.style.opacity = '0';
+            long.style.opacity = '1';
+            long.style.maxHeight = '100px';
+          } else {
+            short.style.opacity = '1';
+            long.style.opacity = '0';
+            long.style.maxHeight = '0';
+          }
+        }
+      });
+
+      // for accessibility: keyboard toggle (Enter/Space)
+      document.querySelector('.brand-hover').setAttribute('tabindex', '0');
+      document.querySelector('.brand-hover').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>

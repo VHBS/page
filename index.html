@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfólio — Victor Hugo Baum Schlichting</title>
+  <meta name="description"
+    content="Portfólio de Victor Hugo Baum Schlichting (VHBS), desenvolvedor Fullstack. Projetos, habilidades, experiência e contato." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script src="https://cdn.tailwindcss.com?plugins=typography,container-queries"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="min-h-screen">
+  <div class="perspective">
+    <div class="cube" id="cube">
+      <div class="side front"></div>
+      <div class="side back"></div>
+      <div class="side left"></div>
+      <div class="side right"></div>
+      <div class="side top"></div>
+      <div class="side bottom"></div>
+    </div>
+  </div>
+
+  <header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-xl border-b z-50 px-6 h-14">
+    <nav class="mx-auto flex items-center justify-between h-full container">
+      <a href="#inicio" id="logo" class="text-lg border p-2 font-black">VHBS</a>
+
+      <ul class="flex space-x-6 text-sm">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre" class="text-nowrap">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="w-full pt-14 gap-10 flex flex-col ">
+
+    <section aria-labelledby="inicio-title" id="inicio" class="min-h-fit h-[calc(100vh-3.5rem)] w-full px-6">
+      <div class="md:container m-auto flex flex-col justify-center items-center h-full">
+
+        <h1 id="inicio-title" class="xl:text-[10rem] lg:text-[8rem] md:text-[6rem] text-[4rem] font-black">
+          VICTOR HUGO
+          <br />
+          BAUM SCHLICHTING
+          <br />
+          <span class="xl:text-[3rem] lg:text-[2rem] md:text-[1rem] text-[0.5rem] font-extralight">
+            FULLSTACK DEVELOPER
+          </span>
+        </h1>
+
+      </div>
+    </section>
+
+    <section aria-labelledby="sobre-title" id="sobre" class="flex flex-col gap-4 px-6">
+      <div class="container m-auto prose lg:prose-xl text-justify backdrop-blur-lg border p-10 divide-y">
+        <h2 id="sobre-title">Sobre</h2>
+
+        <p>Desenvolvedor <strong>fullstack</strong> e estudante de <strong>Análise e Desenvolvimento de Sistemas pelo
+            Senac</strong>.
+          Minha jornada
+          na tecnologia começou cedo, inspirado pela curiosidade de entender como os jogos que eu jogava eram feitos. Ao
+          longo do tempo, essa curiosidade evoluiu para uma paixão por resolver problemas e criar soluções.
+
+          Passei por diferentes formações, incluindo o curso de <strong>Desenvolvimento Web da Trybe</strong> e cursos
+          livres de
+          <strong>design para web</strong>, o que me deu uma base sólida tanto no lado técnico quanto no visual. Hoje
+          atuo
+          na <strong>Fleetz
+            System</strong>, desenvolvendo soluções em <strong>PHP, JavaScript/TypeScript, ReactJS, Node.js, MySQL,
+            RabbitMQ e Python</strong>,
+          além de ter experiência com automações e gerenciamento de recursos na <strong>AWS</strong>.
+
+          Me considero alguém <strong>dedicado, de aprendizado rápido e colaborativo</strong>, sempre buscando crescer
+          através de novos
+          desafios. Atualmente, meu foco é evoluir como desenvolvedor e explorar diferentes áreas da tecnologia,
+          acreditando que cada experiência agrega novas formas de aprendizado.
+        </p>
+      </div>
+    </section>
+
+    <div class="scroll-container">
+      <div class="scroll-track flex">
+        <!-- PRIMEIRA CÓPIA -->
+        <div class="scroll-item"><img src="./public/php.svg" alt="PHP" /></div>
+        <div class="scroll-item"><img src="./public/typescript.svg" alt="TypeScript" /></div>
+        <div class="scroll-item"><img src="./public/python.svg" alt="Python" /></div>
+        <div class="scroll-item"><img src="./public/react.svg" alt="React" /></div>
+        <div class="scroll-item"><img src="./public/reactquery.svg" alt="React Query" /></div>
+        <div class="scroll-item"><img src="./public/tailwindcss.svg" alt="Tailwind" /></div>
+        <div class="scroll-item"><img src="./public/bootstrap.svg" alt="Bootstrap" /></div>
+        <div class="scroll-item"><img src="./public/nodedotjs.svg" alt="Node.js" /></div>
+        <div class="scroll-item"><img src="./public/nestjs.svg" alt="NestJS" /></div>
+        <div class="scroll-item"><img src="./public/mysql.svg" alt="MySQL" /></div>
+        <div class="scroll-item"><img src="./public/postgresql.svg" alt="PostgreSQL" /></div>
+        <div class="scroll-item"><img src="./public/prisma.svg" alt="Prisma" /></div>
+        <div class="scroll-item"><img src="./public/docker.svg" alt="Docker" /></div>
+        <div class="scroll-item"><img src="./public/rabbitmq.svg" alt="RabbitMQ" /></div>
+
+        <!-- SEGUNDA CÓPIA (para loop infinito) -->
+        <div class="scroll-item"><img src="./public/php.svg" alt="PHP" /></div>
+        <div class="scroll-item"><img src="./public/typescript.svg" alt="TypeScript" /></div>
+        <div class="scroll-item"><img src="./public/python.svg" alt="Python" /></div>
+        <div class="scroll-item"><img src="./public/react.svg" alt="React" /></div>
+        <div class="scroll-item"><img src="./public/reactquery.svg" alt="React Query" /></div>
+        <div class="scroll-item"><img src="./public/tailwindcss.svg" alt="Tailwind" /></div>
+        <div class="scroll-item"><img src="./public/bootstrap.svg" alt="Bootstrap" /></div>
+        <div class="scroll-item"><img src="./public/nodedotjs.svg" alt="Node.js" /></div>
+        <div class="scroll-item"><img src="./public/nestjs.svg" alt="NestJS" /></div>
+        <div class="scroll-item"><img src="./public/mysql.svg" alt="MySQL" /></div>
+        <div class="scroll-item"><img src="./public/postgresql.svg" alt="PostgreSQL" /></div>
+        <div class="scroll-item"><img src="./public/prisma.svg" alt="Prisma" /></div>
+        <div class="scroll-item"><img src="./public/docker.svg" alt="Docker" /></div>
+        <div class="scroll-item"><img src="./public/rabbitmq.svg" alt="RabbitMQ" /></div>
+      </div>
+    </div>
+
+    <section aria-labelledby="projetos-title" id="projetos" class="flex flex-col gap-4 px-6">
+      <div class="container m-auto prose lg:prose-xl text-justify backdrop-blur-lg border p-10 divide-y">
+        <h2 id="projetos-title">Projetos</h2>
+
+        <div>
+          <h4 class="m-0 flex items-center gap-4">
+            Fleetz System
+            <a target="_blank" rel="noreferrer noopener" href="http://fleetz.com.br">
+              <ion-icon name="link-outline"></ion-icon>
+            </a>
+          </h4>
+          <div class="flex gap-4 flex-col md:flex-row items-start">
+
+            <img class="w-72" src="./public/projetos/fleetz-system.png" alt="FleetzSystem" />
+
+            <div class="flex flex-col">
+
+              <p><strong>Objetivo:</strong> Sistema de gestão de multas de frotas desenvolvido com o intuito de reduzir
+                riscos e visualizar
+                possíveis economías no meio do transporte. </p>
+
+              <p><strong>Tecnologias:</strong> PHP (Front-end e Back-end), Bootstrap, MySQL, Python. </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 class="m-0 flex items-center gap-4">
+            Fleetz Finance
+            <a target="_blank" rel="noreferrer noopener" href="http://fleetzfinance.com.br">
+              <ion-icon name="link-outline"></ion-icon>
+            </a>
+          </h4>
+          <div class="flex gap-4 flex-col md:flex-row items-start">
+
+            <img class="w-72 b-auto" src="./public/projetos/fleetz-finance.png" alt="FleetzFinance" />
+
+            <div class="flex flex-col">
+
+              <p><strong>Objetivo:</strong> Antecipação de recebíveis (CTes) entre transportadoras e bancos. </p>
+
+              <p><strong>Tecnologias:</strong> TypeScript, ReactJS, NodeJS Tailwind, MySQL, Prisma, Python, RabbitMQ.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; <span id="year"></span> Victor Hugo Baum Schlichting</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
