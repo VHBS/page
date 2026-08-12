@@ -198,6 +198,22 @@ const DENSITIES = {
   loose: { sectionGap: 140, innerPad: 72, cardGap: 56 },
 };
 
+// Reactive media query — lets variants switch layout (grid columns, flex
+// direction) without a CSS file. Typography/spacing prefer clamp() instead.
+function useMediaQuery(query) {
+  const [matches, setMatches] = React.useState(
+    () => window.matchMedia(query).matches,
+  );
+  React.useEffect(() => {
+    const mq = window.matchMedia(query);
+    const onChange = (e) => setMatches(e.matches);
+    setMatches(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [query]);
+  return matches;
+}
+
 // IntersectionObserver-based scroll reveal.
 // Pass the scrollable container ref as `root`; falls back to viewport.
 function useScrollReveal(root, options = {}) {
@@ -407,6 +423,7 @@ Object.assign(window, {
   THEMES,
   FONT_PAIRS,
   DENSITIES,
+  useMediaQuery,
   useScrollReveal,
   useScrollProgress,
   Reveal,

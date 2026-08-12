@@ -14,6 +14,8 @@ function VariantMinimal({
   const aboutRef = React.useRef(null);
   const contactRef = React.useRef(null);
   const scrollY = useScrollProgress(scrollRef);
+  const isMobile = useMediaQuery("(max-width: 700px)");
+  const isNarrow = useMediaQuery("(max-width: 900px)");
 
   const scrollTo = (ref) => (e) => {
     e.preventDefault();
@@ -40,13 +42,15 @@ function VariantMinimal({
     inner: {
       maxWidth: 1100,
       margin: "0 auto",
-      padding: `64px ${D.innerPad}px 120px`,
+      padding: `clamp(36px, 7vw, 64px) clamp(20px, 6vw, ${D.innerPad}px) clamp(64px, 12vw, 120px)`,
     },
     navBar: {
       display: "flex",
       justifyContent: "space-between",
-      alignItems: "baseline",
-      marginBottom: D.sectionGap,
+      alignItems: isMobile ? "flex-start" : "baseline",
+      flexDirection: isMobile ? "column" : "row",
+      gap: isMobile ? 14 : 0,
+      marginBottom: `clamp(56px, 14vw, ${D.sectionGap}px)`,
       fontSize: 13,
     },
     mark: {
@@ -55,9 +59,9 @@ function VariantMinimal({
       fontWeight: 500,
       letterSpacing: "-0.01em",
     },
-    nav: { display: "flex", gap: 28, color: T.muted },
+    nav: { display: "flex", gap: isMobile ? 20 : 28, color: T.muted, flexWrap: "wrap" },
     navLink: { color: "inherit", textDecoration: "none", cursor: "pointer" },
-    hero: { marginBottom: D.sectionGap + 20 },
+    hero: { marginBottom: `clamp(72px, 16vw, ${D.sectionGap + 20}px)` },
     heroKicker: {
       fontSize: 12,
       textTransform: "uppercase",
@@ -67,20 +71,21 @@ function VariantMinimal({
     },
     heroH1: {
       fontFamily: F.display,
-      fontSize: 88,
-      lineHeight: 1.02,
+      fontSize: "clamp(34px, 8.4vw, 88px)",
+      lineHeight: 1.06,
       letterSpacing: "-0.035em",
       fontWeight: 300,
       margin: 0,
       marginBottom: 40,
       textWrap: "balance",
+      overflowWrap: "break-word",
       transform: `translateY(${-scrollY * 0.15}px)`,
       transition: "transform 0.1s linear",
     },
     heroEm: { fontStyle: "italic", fontWeight: 400 },
     heroMeta: {
       display: "flex",
-      gap: 40,
+      gap: isMobile ? "8px 24px" : 40,
       fontSize: 14,
       color: T.muted,
       flexWrap: "wrap",
@@ -108,8 +113,10 @@ function VariantMinimal({
     }),
     workGrid: {
       display: "grid",
-      gridTemplateColumns: "repeat(2, 1fr)",
-      gap: `64px ${D.cardGap}px`,
+      // auto-fit + min() collapses to a single column on narrow screens
+      // without a media query, and never forces a track wider than the row.
+      gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
+      gap: `clamp(48px, 9vw, 64px) ${D.cardGap}px`,
     },
     card: {
       cursor: "pointer",
@@ -157,10 +164,10 @@ function VariantMinimal({
       letterSpacing: "0.02em",
     },
     about: {
-      marginTop: D.sectionGap,
+      marginTop: `clamp(72px, 16vw, ${D.sectionGap}px)`,
       display: "grid",
-      gridTemplateColumns: "1fr 2fr",
-      gap: 80,
+      gridTemplateColumns: isNarrow ? "1fr" : "1fr 2fr",
+      gap: isNarrow ? 20 : 80,
       alignItems: "start",
     },
     aboutLabel: {
@@ -172,7 +179,7 @@ function VariantMinimal({
     },
     aboutBody: {
       fontFamily: F.display,
-      fontSize: 26,
+      fontSize: "clamp(19px, 4.4vw, 26px)",
       lineHeight: 1.4,
       fontWeight: 300,
       letterSpacing: "-0.01em",
@@ -189,17 +196,18 @@ function VariantMinimal({
       marginBottom: 16,
     },
     contact: {
-      marginTop: D.sectionGap + 40,
-      paddingTop: 48,
+      marginTop: `clamp(80px, 18vw, ${D.sectionGap + 40}px)`,
+      paddingTop: `clamp(32px, 8vw, 48px)`,
       borderTop: "1px solid #e0dcd3",
       display: "flex",
+      flexDirection: isMobile ? "column" : "row",
       justifyContent: "space-between",
-      alignItems: "end",
-      gap: 40,
+      alignItems: isMobile ? "flex-start" : "end",
+      gap: isMobile ? 24 : 40,
     },
     contactH: {
       fontFamily: F.display,
-      fontSize: 56,
+      fontSize: "clamp(32px, 7.6vw, 56px)",
       fontWeight: 300,
       letterSpacing: "-0.03em",
       margin: 0,
@@ -211,27 +219,32 @@ function VariantMinimal({
       textDecoration: "none",
       borderBottom: "1px solid currentColor",
       paddingBottom: 2,
+      whiteSpace: "nowrap",
     },
     footer: {
-      marginTop: 64,
+      marginTop: `clamp(48px, 10vw, 64px)`,
       paddingTop: 28,
       paddingBottom: 8,
       borderTop: "1px solid #e0dcd3",
       display: "flex",
       justifyContent: "space-between",
-      alignItems: "center",
+      alignItems: isMobile ? "flex-start" : "center",
+      flexDirection: isMobile ? "column" : "row",
       flexWrap: "wrap",
-      gap: 16,
+      gap: isMobile ? 20 : 16,
       fontSize: 12,
       color: T.muted,
       textTransform: "uppercase",
       letterSpacing: "0.14em",
     },
-    socials: { display: "flex", gap: 8 },
+    // The social pills are the widest fixed row on the page (~460px), so they
+    // must be allowed to wrap or they blow out the mobile viewport.
+    socials: { display: "flex", flexWrap: "wrap", gap: 8 },
     socialLink: {
       display: "inline-flex",
       alignItems: "center",
       gap: 8,
+      whiteSpace: "nowrap",
       padding: "8px 14px",
       border: "1px solid #e0dcd3",
       borderRadius: 100,
@@ -421,8 +434,8 @@ function VariantMinimal({
                 style={{
                   marginTop: 40,
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  gap: 32,
+                  gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 140px), 1fr))",
+                  gap: isMobile ? "28px 20px" : 32,
                   fontSize: 13,
                   color: T.muted,
                 }}
